@@ -85,7 +85,7 @@ Sigue estos pasos para clonar e instalar el proyecto en tu máquina local:
    
 4. **Exportación de Datos a CSV**
 
-   - Permite exportar la lista de clientes a un archivo CSV, excluyendo las acciones de edición y eliminación.
+   - Permite exportar la lista de clientes a un archivo CSV.
 
 
 ## Instalación de Dependencias Adicionales
