@@ -1,0 +1,48 @@
+<mat-toolbar>
+  <button mat-button (click)="openCreateClientDialog()" class="blue-button">
+    <mat-icon>add</mat-icon> Nuevo
+  </button>
+  <button mat-button (click)="exportToCSV()" class="blue-button">
+    <mat-icon>download</mat-icon> Exportar
+  </button>
+</mat-toolbar>
+<div class="search-container">
+  <app-search (search)="onSearch($event)" class="responsive-search"></app-search>
+</div>
+<mat-table [dataSource]="clients" class="mat-elevation-z8 responsive-table">
+  <!-- Columnas de la tabla -->
+  <ng-container matColumnDef="sharedKey">
+    <mat-header-cell *matHeaderCellDef> Shared Key </mat-header-cell>
+    <mat-cell *matCellDef="let client"> {{client.userName}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="businnessID">
+    <mat-header-cell *matHeaderCellDef> Business ID </mat-header-cell>
+    <mat-cell *matCellDef="let client"> {{client.name}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="phone">
+    <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
+    <mat-cell *matCellDef="let client"> {{client.phone}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+    <mat-cell *matCellDef="let client"> {{client.email}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="startDate">
+    <mat-header-cell *matHeaderCellDef> Start Date </mat-header-cell>
+    <mat-cell *matCellDef="let client"> {{client.startDate | date}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="endDate">
+    <mat-header-cell *matHeaderCellDef> End Date </mat-header-cell>
+    <mat-cell *matCellDef="let client"> {{client.endDate | date}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+    <mat-cell *matCellDef="let client">
+      <button mat-button class="edit-button" (click)="editClient(client)">Editar</button>
+      <button mat-button class="delete-button" (click)="deleteClient(client.id)">Eliminar</button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

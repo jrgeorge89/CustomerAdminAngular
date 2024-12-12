@@ -1,0 +1,36 @@
+<div class="responsive-search">
+  <mat-form-field>
+    <input matInput placeholder="Ingrese Shared Key" [(ngModel)]="userName">
+  </mat-form-field>
+  <button mat-button (click)="basicSearch()" class="light-gray-button">Buscar</button>
+  <button mat-button (click)="toggleAdvancedSearch()" class="dark-blue-button">Búsqueda Avanzada</button>
+  <button mat-button type="button" (click)="clearSearch()" class="gray-button">Limpiar</button>
+
+  <div *ngIf="showAdvancedSearch" class="advanced-search-fields">
+    <form [formGroup]="searchForm" (ngSubmit)="advancedSearch()">
+      <mat-form-field>
+        <input matInput placeholder="Shared Key" formControlName="userName">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Business ID" formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Phone" formControlName="phone">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker1" placeholder="Start Date" formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker2" placeholder="End Date" formControlName="endDate">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+      <button mat-button type="submit" [disabled]="searchForm.invalid" class="blue-button">Buscar</button>
+    </form>
+  </div>
+</div>
